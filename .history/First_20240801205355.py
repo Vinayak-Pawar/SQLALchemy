@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base
 
 # common database connection template to follow: "dialect+driver://username:password@host:port/database"
@@ -19,8 +19,5 @@ Base = declarative_base()
 class user(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
-    name = Column(String)
-    age = Column(Integer)
-    email = Column(String)
-    
+    name = Column(String(255))
 Base.metadata.create_all(engine)

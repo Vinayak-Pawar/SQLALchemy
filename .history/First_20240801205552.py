@@ -21,6 +21,5 @@ class user(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     age = Column(Integer)
-    email = Column(String)
     
 Base.metadata.create_all(engine)

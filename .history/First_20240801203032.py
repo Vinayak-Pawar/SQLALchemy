@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base
 
 # common database connection template to follow: "dialect+driver://username:password@host:port/database"
@@ -14,13 +14,4 @@ connection_string = f'postgresql://{username}:{password}@{host}:{port}/{database
 # Create an engine
 engine = create_engine(connection_string)
 
-Base = declarative_base()
-
-class user(Base):
-    __tablename__ = 'users'
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    age = Column(Integer)
-    email = Column(String)
-    
-Base.metadata.create_all(engine)
+Base = declarative_base())
