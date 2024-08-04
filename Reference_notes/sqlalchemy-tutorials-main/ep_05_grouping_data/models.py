@@ -2,17 +2,17 @@
 # |                 Created By: ZeqTech                       |
 # |         YouTube: https://www.youtube.com/@zeqtech         |
 # =============================================================
-# Related Video: https://www.youtube.com/watch?v=f0-kEG37GE0
+# Related Video: https://www.youtube.com/watch?v=ftbYlej2xQY
 
-from sqlalchemy import URL, create_engine, Column, Integer, String
+from sqlalchemy import URL, Column, Integer, String, create_engine
 from sqlalchemy.orm import declarative_base
 
 url_object = URL.create(
     'sqlite',
-    database='ep_02_database.db',
+    database='ep_05_database.db',
 )
 # or
-# engine = create_engine("sqlite:///ep_02_database.db.db")
+# engine = create_engine("sqlite:///ep_05_database.db.db")
 
 # Create an engine for a SQLite database
 engine = create_engine(url_object)

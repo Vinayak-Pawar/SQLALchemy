@@ -2,20 +2,20 @@
 # |                 Created By: ZeqTech                       |
 # |         YouTube: https://www.youtube.com/@zeqtech         |
 # =============================================================
-# Related Video: https://www.youtube.com/watch?v=f0-kEG37GE0
+# Related Video: https://www.youtube.com/watch?v=Z2zD3EdjpNo
 
 from sqlalchemy import URL, create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base
 
 url_object = URL.create(
     'sqlite',
-    database='ep_02_database.db',
+    database='ep_01_database.db',
 )
-# or
-# engine = create_engine("sqlite:///ep_02_database.db.db")
 
 # Create an engine for a SQLite database
 engine = create_engine(url_object)
+# or
+# engine = create_engine("sqlite:///ep_01_database.db.db")
 
 # Create a base class for our models
 Base = declarative_base()
@@ -29,9 +29,6 @@ class User(Base):
     name = Column(String)
     age = Column(Integer)
 
-    def __repr__(self) -> str:
-        return f'<User id: {self.id:>3}: name: {self.name:<13}, age: {self.age:>3}>'
 
-
-# create the database tables
+# Create the database tables
 Base.metadata.create_all(engine)

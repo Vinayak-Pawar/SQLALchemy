@@ -1,0 +1,11 @@
+.pytest_cache/
+*.db
+**/__pycache__*
+screenshots/
+later
+crash_course/
+.*x
+presentations/
+example/
+a.txt
+.vscode
