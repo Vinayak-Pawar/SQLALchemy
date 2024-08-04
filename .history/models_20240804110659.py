@@ -22,5 +22,6 @@ class User(Base):  # Class name should be 'User' to match the import
     id = Column(Integer, primary_key=True)
     name = Column(String)
     age = Column(Integer)
+    email = Column(String)
     
 Base.metadata.create_all(engine)
