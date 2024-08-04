@@ -1,71 +1,26 @@
-# =============================================================
-# |                 Created By: ZeqTech                       |
-# |         YouTube: https://www.youtube.com/@zeqtech         |
-# =============================================================
-# Related Video: https://www.youtube.com/watch?v=f0-kEG37GE0
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import declarative_base
 
-from models import User, engine
-from sqlalchemy.orm import sessionmaker
+# common database connection template to follow: "dialect+driver://username:password@host:port/database"
 
-Session = sessionmaker(bind=engine)
-session = Session()
+username = 'postgres'
+password = '12345'  # Replace with your actual password
+host = 'localhost'
+port = '5432'
+database = 'postgres'
 
-# ===================================================================================
-# CREATE
+connection_string = f'postgresql://{username}:{password}@{host}:{port}/{database}'
 
-# If there is data in the database, dont add more data
-if session.query(User).count() < 1:
-    # Create one new User
-    user = User(name='John Doe 1', age=30)
-    session.add(user)
-    session.commit()
+# Create an engine
+engine = create_engine(connection_string)
 
-    # Create multiple Users
-    user_1 = User(name='John Doe 2', age=30)
-    user_2 = User(name='Andrew Pip', age=25)
-    user_3 = User(name='Iron Man', age=57)
-    user_4 = User(name='Richard Rodriguez', age=25)
+Base = declarative_base()
 
-    session.add(user_1)
-    session.add(user_2)
-    session.add_all([user_3, user_4])
-    session.commit()
-
-# ===================================================================================
-# READ
-# query all users
-users = session.query(User).all()
-print(users)
-
-# Get the first User info
-user = users[0]
-print(user)
-print(user.id)
-print(user.name)
-print(user.age)
-
-user = session.query(User).filter_by(id=1).one_or_none()
-print(user)
-
-# Loop over each User
-for user in users:
-    print(f'User id: {user.id}, name: {user.name}, age: {user.age}')
-
-# Get first user from the data
-user_first = session.query(User).first()
-print('First User: ', user_first)
-
-
-# ===================================================================================
-# UPDATE
-# update a user's name
-user = users[0]
-user.name = 'Jane Doe'
-session.commit()
-
-# ===================================================================================
-# DELETE
-# delete a user record
-user = users[0]
-session.delete(user)
-session.commit()
+class user(Base):
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    age = Column(Integer)
+    email = Column(String)
+    
+Base.metadata.create_all(engine)

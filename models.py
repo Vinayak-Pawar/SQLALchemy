@@ -1,37 +1,26 @@
-# =============================================================
-# |                 Created By: ZeqTech                       |
-# |         YouTube: https://www.youtube.com/@zeqtech         |
-# =============================================================
-# Related Video: https://www.youtube.com/watch?v=f0-kEG37GE0
-
-from sqlalchemy import URL, create_engine, Column, Integer, String
+from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base
 
-url_object = URL.create(
-    'sqlite',
-    database='ep_02_database.db',
-)
-# or
-# engine = create_engine("sqlite:///ep_02_database.db.db")
+# common database connection template to follow: "dialect+driver://username:password@host:port/database"
 
-# Create an engine for a SQLite database
-engine = create_engine(url_object)
+username = 'postgres'
+password = '12345'  # Replace with your actual password
+host = 'localhost'
+port = '5432'
+database = 'postgres'
 
-# Create a base class for our models
+connection_string = f'postgresql://{username}:{password}@{host}:{port}/{database}'
+
+# Create an engine
+engine = create_engine(connection_string)
+
 Base = declarative_base()
 
-
-# Define a model for the "users" table
-class User(Base):
+class user(Base):
     __tablename__ = 'users'
-
     id = Column(Integer, primary_key=True)
     name = Column(String)
     age = Column(Integer)
-
-    def __repr__(self) -> str:
-        return f'<User id: {self.id:>3}: name: {self.name:<13}, age: {self.age:>3}>'
-
-
-# create the database tables
+    email = Column(String)
+    
 Base.metadata.create_all(engine)
