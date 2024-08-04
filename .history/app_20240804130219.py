@@ -11,9 +11,7 @@ session = Session()
 users_all = session.query(User).all()
 
 # Query all the users with age greater than or equal to 25
-users_filtered = session.query(User).filter(User.age >= 25).all()
+users_filtered = session.query(users).filter(user)
 
-print("All users: ", len(users_all))
-print("Filtered users: ", len(users_filtered))
 
 session.commit()

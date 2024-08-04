@@ -14,6 +14,6 @@ users_all = session.query(User).all()
 users_filtered = session.query(User).filter(User.age >= 25).all()
 
 print("All users: ", len(users_all))
-print("Filtered users: ", len(users_filtered))
+print("Filtered users: ", len(users_all))
 
 session.commit()
