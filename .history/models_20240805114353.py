@@ -1,6 +1,6 @@
 # models.py
-from sqlalchemy import (create_engine, Column, Integer, String, ForeignKey)
-from sqlalchemy.orm import declarative_base, relationship,sessionmaker
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import declarative_base
 
 # common database connection template to follow: "dialect+driver://username:password@host:port/database"
 
@@ -15,12 +15,10 @@ connection_string = f'postgresql://{username}:{password}@{host}:{port}/{database
 # Create an engine
 engine = create_engine(connection_string)
 
-Session = sessionmaker(bind=engine)
-session = Session()
-
 Base = declarative_base()
 
-
+Session = sessionmaker(bind=engine)
+session = Session()
 class User(Base):  # Class name should be 'User' to match the import
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
@@ -28,9 +26,3 @@ class User(Base):  # Class name should be 'User' to match the import
     age = Column(Integer)
     
 Base.metadata.create_all(engine)
-
-
-# There are different ways Mapped and UnMapped method
-
-# non mapped method
-

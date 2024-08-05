@@ -1,5 +1,5 @@
 # models.py
-from sqlalchemy import (create_engine, Column, Integer, String, ForeignKey)
+from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base, relationship,sessionmaker
 
 # common database connection template to follow: "dialect+driver://username:password@host:port/database"
@@ -28,9 +28,3 @@ class User(Base):  # Class name should be 'User' to match the import
     age = Column(Integer)
     
 Base.metadata.create_all(engine)
-
-
-# There are different ways Mapped and UnMapped method
-
-# non mapped method
-

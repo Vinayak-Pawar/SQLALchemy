@@ -28,9 +28,3 @@ class User(Base):  # Class name should be 'User' to match the import
     age = Column(Integer)
     
 Base.metadata.create_all(engine)
-
-
-# There are different ways Mapped and UnMapped method
-
-# non mapped method
-

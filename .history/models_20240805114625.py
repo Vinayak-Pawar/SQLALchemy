@@ -31,6 +31,3 @@ Base.metadata.create_all(engine)
 
 
 # There are different ways Mapped and UnMapped method
-
-# non mapped method
-
