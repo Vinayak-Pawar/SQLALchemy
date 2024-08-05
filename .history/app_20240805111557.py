@@ -6,7 +6,7 @@ from models import User, engine
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# List of all the functions in func
+# List of all the func
 # Basic Functions
 # Aggregate Functions:
 
@@ -92,7 +92,7 @@ session = Session()
 
 
 # group users by age
-users = session.query(User.name, func.count(User.id)).group_by(User.name).all()
+users = session.query(User.age, func.count(User.id)).group_by(User.age).all()
 
 print(users)
 
