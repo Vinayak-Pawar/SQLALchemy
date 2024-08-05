@@ -21,7 +21,7 @@ users = session.query(User).filter(User.age >= 25).all()
 
 # filter vs filter_by:
 # filter: Used for more complex queries and supports a wide range of conditions using column attributes.
-# filter_by: Simplified version used for equality checks (e.g., filter_by(name='Iron Man')). so when you want to check like "==","=" use filter_by. 
+# filter_by: Simplified version used for equality checks (e.g., filter_by(name='Iron Man')). so when you want to check like "==","=" use filter_by." 
 for user in users:
     print(f"User age: {user.age}")
 
