@@ -98,17 +98,15 @@ session = Session()
 
 # Chaining
 
-# users_tuple = (
-#     session.query(User.age, func.count(User.id))
-#     .filter(User.age > 24)
-#     .order_by(User.age)
-#     .filter(User.age < 50)
-#     .group_by(User.age)
-#     .all()
-# )
+users_tuple = (
+    session.query(User.age, func.count(User.id))
+    .filter(User.age > 24)
+    .order_by(User.age)
+    .filter(User.age < 50)
+    .group_by(User.age)
+    .all()
 
-# for age, count in users_tuple:
-#     print(f'Age: {age}-{count} users')
+
 
 
 session.commit()
