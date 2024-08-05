@@ -7,6 +7,4 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 
-
-
-session.commit()
+session.
