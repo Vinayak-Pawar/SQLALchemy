@@ -1,7 +1,7 @@
 # Ordering Data
 import random 
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import or_ # we can also import and_ for doing and operations
+from sqlalchemy import or_ # we can also import and_ 
 from models import User, engine
 
 Session = sessionmaker(bind=engine)
@@ -32,8 +32,6 @@ users = session.query(User).filter(or_(User.age >= 30, User.name == 'Iron Man', 
 
 # In this "or_" function we can pass as many parameters as we want.
 # We can also use Bitwise operators like " | " but remember to wrap your conditions like this "(User.age >= 30) | (User.name == 'Iron Man') | (User.id > 4)"
-
-# Same with and_ we can also use bitwise operator " & " and all the rules of or_ applies like () for conditions.
 for user in users:
     print(f"{user.age}-{user.name} {user.id}")
 
